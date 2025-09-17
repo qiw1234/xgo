@@ -34,6 +34,7 @@ class xgoCfg( LeggedRobotCfg ):
     class env( LeggedRobotCfg.env ):
         num_envs = 4096
         num_observations = 48
+        num_privileged_obs = 48  # privileged observations for asymmetric actor-critic
     class init_state( LeggedRobotCfg.init_state ):
         pos = [0.0, 0.0, 0.15] # x,y,z [m]
         default_joint_angles = { # = target angles [rad] when action = 0.0
@@ -88,6 +89,7 @@ class xgoCfg( LeggedRobotCfg ):
         max_push_vel_xy = 0.02
     class normalization( LeggedRobotCfg.normalization ):
         class obs_scales( LeggedRobotCfg.normalization.obs_scales ):
+            
             lin_vel = 10.0
             ang_vel = 0.5
             dof_pos = 1.0
@@ -104,6 +106,7 @@ class xgoCfg( LeggedRobotCfg ):
             action_rate = -0.12
             dof_acc = -2.5e-7
             tracking_lin_vel = 2.5
+            #tracking_lin_vel = 0
             tracking_ang_vel = 1
 
 
